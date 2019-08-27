@@ -13,6 +13,6 @@ jobs:
         with:
           dotnet-version: '2.2.103' # SDK Version to use.
       - name: enter folder
-        run: cd 'Movies Versions'
+        run: cd 'Movies Versions' && ls
       - name: build project
-        run: dotnet build 'Movies Versions.csproj'
+        run: dotnet build 'MoviesVersions.csproj'
