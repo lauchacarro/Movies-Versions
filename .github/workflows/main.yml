@@ -15,12 +15,9 @@ jobs:
           dotnet-version: '2.2.103' # SDK Version to use.
       - uses: actions/heroku@1.0.0
       - name: Build
-	env:
-	  HEROKU_API_KEY: 60c9efd0-98e3-477f-80b6-a5cfc93c8673
+	
         run: |
           cd 'Movies Versions'
           dotnet publish -o app
           cd app
-	  container:login
-	  container:push -a moviesversion web
-	  container:release -a moviesversion web
+	 
