@@ -1,4 +1,4 @@
-name: CI
+name: CIOld
 
 on: [push]
 
@@ -6,26 +6,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-      steps:
-      - uses: actions/checkout@v1
-      - name: Setup Dotnet for use with actions
-        uses: actions/setup-dotnet@v1.0.0
+    
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-dotnet@v1
         with:
-            dotnet-version: '2.2.103' # SDK Version to use.
-      - name: Build
-        run: |
-          cd 'Movies Versions'
-          dotnet publish -o app
-          cd app
-        - name: GitHub Action for Heroku
-          uses: actions/heroku@1.0.0
-          env:
-            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          run: |
-            container:login
-            container:push -a moviesversion web
-            container:release -a moviesversion web
-
-
-
+          dotnet-version: '2.2.103' # SDK Version to use.
+      - name: build project
+        run: cd 'Movies Versions' && dotnet build MoviesVersions.csproj
