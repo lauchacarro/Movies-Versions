@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/heroku@1.0.0
       - uses: actions/checkout@master
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.2.103' # SDK Version to use.
       - name: build project
-        run: cd 'Movies Versions' && dotnet publish -o app && cd app && heroku container:login && heroku container:push -a moviesversion web && heroku container:release -a moviesversion web
+        run: | 
+          cd 'Movies Versions'
+          dotnet publish -o app
+          cd app
