@@ -5,8 +5,8 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    
+  runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v1
     - name: Setup Dotnet for use with actions
@@ -16,14 +16,13 @@ jobs:
         cd 'Movies Versions'
         dotnet publish -o app
         cd app
-        
-     - name: GitHub Action for Heroku
-       uses: actions/heroku@1.0.0
-       env:
+    - name: GitHub Action for Heroku
+      uses: actions/heroku@1.0.0
+        env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-       run: |
-         container:login
-         container:push -a moviesversion web
-         container:release -a moviesversion web
+        run: |
+          container:login
+          container:push -a moviesversion web
+          container:release -a moviesversion web
 
-        
+
