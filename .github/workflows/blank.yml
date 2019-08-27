@@ -15,4 +15,4 @@ jobs:
       - name: enter folder
         run: cd 'Movies Versions' && ls
       - name: build project
-        run: dotnet build 'MoviesVersions.csproj'
+        run: ls && dotnet build MoviesVersions.csproj
