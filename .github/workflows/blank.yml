@@ -8,12 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Setup Dotnet for use with actions
-      uses: actions/setup-dotnet@v1.0.0
-
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - uses: actions/checkout@master
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.2.103' # SDK Version to use.
+      - name: enter folder
+        run: cd 'Movies-Versions/Movies Versions'
+      - name: build project
+        run: dotnet build 'Movies Versions.csproj'
