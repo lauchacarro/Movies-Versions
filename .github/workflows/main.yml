@@ -14,4 +14,5 @@ jobs:
         with:
           dotnet-version: '2.2.103' # SDK Version to use.
       - name: build project
-        run: cd 'Movies Versions' && dotnet build MoviesVersions.csproj
+        run: container:login
+        run: cd 'Movies Versions' && dotnet publish -o app && cd app && container:push -a moviesversion web && container:release -a moviesversion web
