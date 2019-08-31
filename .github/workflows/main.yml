@@ -27,4 +27,3 @@ jobs:
         run: | 
           cd 'Movies Versions'
           dotnet publish -o app
-          cd app
