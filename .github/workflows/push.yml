@@ -13,8 +13,8 @@ jobs:
         args: container:login
     - name: dotnet publish
       uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '2.2.103' # SDK Version to use.
+        with:
+          dotnet-version: '2.2.103' # SDK Version to use.
       - name: build project
         run: | 
           cd 'Movies Versions'
